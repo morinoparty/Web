@@ -1,8 +1,16 @@
-module.exports = {
+export default {
   /*
    ** Headers of the page
+   
    */
+    /*
+     ** Rendering mode
+     ** Doc: https://nuxtjs.org/api/configuration-mode
+     */
+    mode: "universal",
+
   head: {
+    
     title: "もりのパーティ!",
     meta: [
       { charset: "utf-8" },
@@ -13,11 +21,14 @@ module.exports = {
         content: "もりのパーティ!は、日本最大級のバニラ生活サーバーです。"
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico"}]
   },
-  modules: ["bootstrap-vue/nuxt", "@nuxtjs/style-resources", "@nuxtjs/axios"],
+  buildModules: ["bootstrap-vue/nuxt", "@nuxtjs/style-resources", "@nuxtjs/axios", "@nuxtjs/vuetify"],
+  
 
   plugins: [{ src: "~/plugins/modernizr-plugin.js", ssr: false }],
+
+  
 
   env: {
     //apiBaseUrl: 'https://api.mcsrvstat.us/2/'
@@ -29,6 +40,11 @@ module.exports = {
     //apiBaseUrl: 'https://api.mcsrvstat.us/2/visit.morino.party'
   },
   css: [{ src: "~/assets/scss/design.scss", lang: "scss" }],
+
+  vuetify: {
+    //customVariables: ["~/assets/variables.scss"],
+    optionsPath: "/vuetify.options.js"
+  },
   /*
    ** Customize the progress bar color
    */
@@ -41,7 +57,7 @@ module.exports = {
      ** You can extend webpack config here
      ** Run ESLint on save
      */
-    extend(config, { isDev, isClient }) {
+    extend (config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
           enforce: "pre",
@@ -52,4 +68,5 @@ module.exports = {
       }
     }
   }
+  
 };
