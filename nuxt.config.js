@@ -17,7 +17,7 @@ module.exports = {
   },
   modules: ["bootstrap-vue/nuxt", "@nuxtjs/style-resources", "@nuxtjs/axios"],
 
-  plugins: [{ src: "~/plugins/modernizr-plugin.js" }],
+  plugins: [{ src: "~/plugins/modernizr-plugin.js", ssr: false }],
 
   env: {
     //apiBaseUrl: 'https://api.mcsrvstat.us/2/'
