@@ -53,7 +53,7 @@
         </a>
       </div>
     </nav>
-    <section id="about">
+    <section class="about">
       <div class="content">
         <div class="container">
           <h2>
@@ -65,7 +65,7 @@
       </div>
       <div class="image" style="background-image: url(/assets/background_ap_2.webp);"></div>
     </section>
-    <section id="about">
+    <section class="about">
       <div class="content">
         <div class="container">
           <h2>
@@ -77,7 +77,7 @@
       </div>
       <div class="image" style="background-image: url(/assets/background_ap_1.webp);"></div>
     </section>
-    <section id="about">
+    <section class="about">
       <div class="content">
         <div class="container">
           <h2>
@@ -248,157 +248,7 @@
         </div>
       </div>
     </section>
-    <section id="now">
-      <div class="content">
-        <div class="container">
-          <h2>
-            <img src="/assets/section_now_title.svg" class="svgtitle" alt />
-          </h2>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="status">
-                現在
-                <span>35</span>クラフター 参加中！
-                <br />バージョン :
-                <span>1.14.4</span>
-                <br />IP :
-                <span>visit.morino.party</span>
-                <br />
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <figure class="user">
-                <h3>オンラインのユーザー</h3>
-                <br />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/47539b83-9a4e-40a1-a50a-8088018dd371?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/85c6a9e3-f5ff-4ea7-8aa1-17e00027b6b2?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/40685bf3-7956-4451-a909-80a91caf8a1f?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/3d76c12c-2969-4fcf-96a6-0e74a8b775d5?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/68c7bdb5-c4f2-4500-8355-6da693cecca4?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/413c6625-ad2d-4275-be30-b4e314c4f4ea?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/36e1ac5c-ac93-4e81-a5b1-bca376ea451a?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/1f8df9ce-48a1-44ba-9e90-3b3564f928f5?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/dbb0b273-3032-4804-9c58-ae26621a953e?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/c25cd1be-2a88-43dc-bf79-af5d5acaebbb?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/f9ad48e8-e37a-4f49-aa5c-ef5a469f095e?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/0ebbb0bf-f0d1-41a6-ac80-ca9b2f6df883?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/90327daa-c93f-4406-ab3e-7764b703ede7?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/1bf784a6-b460-4ed5-9e2a-8c74ead231e5?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/ccc970f8-94c2-4dcc-a0d9-32982a1709ba?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/cddc2624-c62e-454f-949b-a5f28e7a15f2?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/07acaa84-c01c-4368-a5de-313fde68867f?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/826ec5ba-2ff6-471d-8d14-5dee550d3bc0?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/de33a55a-ef79-4505-8224-64b63474c788?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/05aa4170-ef75-4685-aa98-10af71cedcbe?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/14c84424-513f-4347-8287-48d558ac75d0?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/274ad7d9-9134-4e26-8954-128a3ae20f63?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/502b400b-69b6-4c89-a045-df0a38e8123f?size=64"
-                  alt
-                />
-                <img
-                  class="head"
-                  src="https://crafatar.com/renders/head/2533629b-f4b2-41f3-8919-e83b6d115d72?size=64"
-                  alt
-                />
-              </figure>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="bg_color"></div>
-      <div class="bg"></div>
-    </section>
+    <playingcounterbottom />
     <MoriFooter />
   </div>
 </template>
@@ -406,11 +256,13 @@
 <script>
 import MoriFooter from "~/components/footer.vue";
 import playingcounter from "~/components/playingcounter.vue";
+import playingcounterbottom from "~/components/section#now.vue";
 
 export default {
   components: {
     MoriFooter,
-    playingcounter
+    playingcounter,
+    playingcounterbottom
   }
 };
 </script>
