@@ -31,8 +31,7 @@ header {
     transform: translate3d(0, 0, -1px);
     width: 100%;
     height: 100vh;
-    background: url(/assets/firstbackground.jpg) center/cover no-repeat;
-    -webkit-background-size: cover;
+    background: url(/assets/firstbackground.webp) center/cover no-repeat;
   }
   .bg_color {
     z-index: 1;
@@ -270,7 +269,7 @@ section#now {
     position: absolute;
     height: 100vh;
     width: 100%;
-    background-image: url(/assets/seccondbackground.png);
+    background-image: url(/assets/seccondbackground.webp);
     background-size: cover;
     bottom: 0;
   }

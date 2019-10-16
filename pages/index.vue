@@ -68,7 +68,7 @@
           <p>ふと、日常から離れて目の前の現実から離れる、そんな瞬間が、このサーバーに。</p>
         </div>
       </div>
-      <div class="image" style="background-image: url(/assets/background_ap_2.png);"></div>
+      <div class="image" style="background-image: url(/assets/background_ap_2.webp);"></div>
     </section>
     <section id="about">
       <div class="content">
@@ -80,7 +80,7 @@
           <p>メインマップは純粋な1.14のマップ。その広大な世界を開拓するのはあなたです。</p>
         </div>
       </div>
-      <div class="image" style="background-image: url(/assets/background_ap_1.png);"></div>
+      <div class="image" style="background-image: url(/assets/background_ap_1.webp);"></div>
     </section>
     <section id="about">
       <div class="content">
@@ -92,7 +92,7 @@
           <p>YouTubeで活躍中のいろんなクラフターとコラボなど、様々なイベントを開催予定です！</p>
         </div>
       </div>
-      <div class="image" style="background-image: url(/assets/background_ap_3.png);"></div>
+      <div class="image" style="background-image: url(/assets/background_ap_3.webp);"></div>
     </section>
     <section id="rules">
       <div class="container">
