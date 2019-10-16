@@ -9,7 +9,7 @@
           <div class="col-md-6">
             <div class="status">
               現在
-              <span>{{count}}</span>クラフター 参加中！
+              <span>{{count}} </span>クラフター 参加中！
               <br />バージョン :
               <span>{{version}}</span>
               <br />IP :

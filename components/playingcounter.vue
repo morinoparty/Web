@@ -12,15 +12,11 @@
 import axios from "axios";
 
 export default {
-  data() {
-    return {
-        info: null
-    }
-  },
-  async created() {
-    const response = await axios.get('https://api.mcsrvstat.us/2/visit.morino.party')
-   console.log(response.data.players.online)
-    this.info = response.data.players.online
+  asyncData () {
+    const response = axios.get('https://api.mcsrvstat.us/2/visit.morino.party')
+      .then((res) => {
+        return { info: res.data.players.online }
+      })
   }
-};
+}
 </script>
