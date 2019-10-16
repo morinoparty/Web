@@ -22,9 +22,9 @@ module.exports = {
   },
 
   axios: {
-    baseURL: 'https://api.mcsrvstat.us/2/visit.morino.party',
+    //baseURL: 'https://api.mcsrvstat.us/2/visit.morino.party',
     // proxyHeaders: false
-    apiBaseUrl: 'https://api.mcsrvstat.us/2/visit.morino.party'
+    //apiBaseUrl: 'https://api.mcsrvstat.us/2/visit.morino.party'
   },
   css: [{ src: "~/assets/scss/design.scss", lang: "scss" }],
   /*

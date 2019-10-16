@@ -1,4 +1,3 @@
-
 <template>
   <div class="counter">
     <h3>
@@ -10,47 +9,18 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import axios from "axios";
 
-Vue.prototype.$http = axios;
-var vm = new Vue({
-  data: {
-    info: ''
-  }
-})
 export default {
-  async asyncData(req) {
-    let { data } = await axios.get('https://api.mcsrvstat.us/2/visit.morino.party')
-    this.info = response.players.online;
+  data() {
     return {
-      info: null,
-      loading: true,
-      errored: false
-    };
+        info: null
+    }
   },
-  methods: {
-    serverInfo() {
-    //created() {
-      axios.get('https://api.mcsrvstat.us/2/visit.morino.party')
-        .then((res) => {
-          this.info = response.players.online;
-          console.log(response);
-        })
-        .catch(function(error) {
-          console.log(error);
-        })
-        .finally(() => (this.loading = false));
-        
-    },
-  header: {
-    "Content-Type": "application/json",
-    "X-Requested-With": "XMLHttpRequest",
-    responseType: "json"
-  },
-  xsrfCookieName: "csrftoken",
-  xsrfHeaderName: "X-CSRFToken",
-  withCredentials: true
+  async created() {
+    const response = await axios.get('https://api.mcsrvstat.us/2/visit.morino.party')
+   console.log(response.data.players.online)
+    this.info = response.data.players.online
   }
 };
 </script>
