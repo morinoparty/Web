@@ -1,14 +1,14 @@
-import axios from "axios";
+/*import axios from "axios";
 
 export default axios.create({
   baseURL: "https://api.mcsrvstat.us/2/",
   headers: {
     "Content-Type": "application/json",
     "X-Requested-With": "XMLHttpRequest",
-    responseType: "json",
-    Authorization: "JWT " + localStorage.getItem("token")
+    responseType: "json"
   },
   xsrfCookieName: "csrftoken",
   xsrfHeaderName: "X-CSRFToken",
   withCredentials: true
 });
+*/

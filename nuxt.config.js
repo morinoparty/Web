@@ -15,7 +15,17 @@ module.exports = {
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
-  modules: ["bootstrap-vue/nuxt", "@nuxtjs/style-resources"],
+  modules: ["bootstrap-vue/nuxt", "@nuxtjs/style-resources", "@nuxtjs/axios"],
+
+  env: {
+    //apiBaseUrl: 'https://api.mcsrvstat.us/2/'  
+  },
+
+  axios: {
+    baseURL: 'https://api.mcsrvstat.us/2/visit.morino.party',
+    // proxyHeaders: false
+    apiBaseUrl: 'https://api.mcsrvstat.us/2/visit.morino.party'
+  },
   css: [{ src: "~/assets/scss/design.scss", lang: "scss" }],
   /*
    ** Customize the progress bar color
