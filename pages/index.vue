@@ -1,13 +1,8 @@
+import API from '~api'
 <template>
   <div>
     <header>
-      <div class="counter">
-        <h3>
-          <span>33</span>
-          <br />人
-        </h3>
-        <p>参加中！</p>
-      </div>
+      <playingcounter />
       <div class="title">
         <img src="/assets/title.svg" alt />
         <img src="/assets/subtitle.svg" alt />
@@ -410,10 +405,12 @@
 
 <script>
 import MoriFooter from "~/components/footer.vue";
+import playingcounter from "~/components/playingcounter.vue";
 
 export default {
   components: {
-    MoriFooter
+    MoriFooter,
+    playingcounter
   }
 };
 </script>
