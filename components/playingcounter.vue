@@ -1,7 +1,4 @@
-import Vue from "vue";
-import API from '~api'
-Vue.prototype.$http = axios;
-const app = new Vue({
+
 <template>
   <div class="counter">
     <h3>
@@ -13,8 +10,19 @@ const app = new Vue({
 </template>
 
 <script>
+import Vue from 'vue';
+import axios from "axios";
+
+Vue.prototype.$http = axios;
+var vm = new Vue({
+  data: {
+    info: ''
+  }
+})
 export default {
-  data() {
+  async asyncData(req) {
+    let { data } = await axios.get('https://api.mcsrvstat.us/2/visit.morino.party')
+    this.info = response.players.online;
     return {
       info: null,
       loading: true,
@@ -23,16 +31,26 @@ export default {
   },
   methods: {
     serverInfo() {
-      API.get("~api.js")
-        .then(response => {
+    //created() {
+      axios.get('https://api.mcsrvstat.us/2/visit.morino.party')
+        .then((res) => {
           this.info = response.players.online;
+          console.log(response);
         })
         .catch(function(error) {
-          console.log(error.toJSON());
+          console.log(error);
         })
         .finally(() => (this.loading = false));
-    }
+        
+    },
+  header: {
+    "Content-Type": "application/json",
+    "X-Requested-With": "XMLHttpRequest",
+    responseType: "json"
+  },
+  xsrfCookieName: "csrftoken",
+  xsrfHeaderName: "X-CSRFToken",
+  withCredentials: true
   }
 };
 </script>
-}

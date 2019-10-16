@@ -1,4 +1,4 @@
-import API from '~api'
+
 <template>
   <div>
     <header>
