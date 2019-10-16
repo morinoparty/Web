@@ -17,8 +17,10 @@ module.exports = {
   },
   modules: ["bootstrap-vue/nuxt", "@nuxtjs/style-resources", "@nuxtjs/axios"],
 
+  plugins: [{ src: "~/plugins/modernizr-plugin.js" }],
+
   env: {
-    //apiBaseUrl: 'https://api.mcsrvstat.us/2/'  
+    //apiBaseUrl: 'https://api.mcsrvstat.us/2/'
   },
 
   axios: {
@@ -36,6 +38,7 @@ module.exports = {
    */
   build: {
     /*
+     ** You can extend webpack config here
      ** Run ESLint on save
      */
     extend(config, { isDev, isClient }) {

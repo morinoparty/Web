@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <header>
@@ -266,4 +265,3 @@ export default {
   }
 };
 </script>
-

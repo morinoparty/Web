@@ -24,7 +24,7 @@
               <br />
               <div id="v-for-object" class="demo">
                 <div v-for="(players) in items" :key="players">
-                  <img class="head" :src="'https://minotar.net/cube/'+players+'/64.png'" alt />
+                  <img class="head" :src="'https://minotar.net/cube/'+items+'/64.png'" alt />
                 </div>
               </div>
             </figure>
@@ -54,8 +54,17 @@ export default {
       "https://api.mcsrvstat.us/2/visit.morino.party"
     );
     this.count = response.data.players.online;
-    console.log(response.data.players.list);
+
     this.version = response.data.version;
+
+    const main = await axios.get(
+      "https://api.mcsrvstat.us/2/main3.srv.morino.party"
+    );
+    console.log(main.data.players.list);
+    const res = await axios.get(
+      "https://api.mcsrvstat.us/2/res2.srv.morino.party"
+    );
+    console.log(res.data.players.list);
   }
 };
 </script>
