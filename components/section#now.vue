@@ -9,7 +9,7 @@
           <div class="col-md-6">
             <div class="status">
               現在
-              <span>{{count}} </span>クラフター 参加中！
+              <span>{{count}}</span>クラフター 参加中！
               <br />バージョン :
               <span>{{version}}</span>
               <br />IP :
@@ -22,11 +22,13 @@
             <figure class="user">
               <h3>オンラインのユーザー</h3>
               <br />
-              <div id="v-for-object" class="demo">
-                <div v-for="(players) in items" :key="players">
-                  <img class="head" :src="'https://minotar.net/cube/'+items+'/64.png'" alt />
-                </div>
-              </div>
+              <img
+                v-for="playerlist in playerlist"
+                :key="playerlist"
+                class="head"
+                :src="'https://minotar.net/cube/'+playerlist+'/100.png'"
+                alt
+              />
             </figure>
           </div>
         </div>
@@ -45,7 +47,7 @@ export default {
   data() {
     return {
       count: null,
-      players: {},
+      playerlist: {},
       version: null
     };
   },
@@ -60,11 +62,15 @@ export default {
     const main = await axios.get(
       "https://api.mcsrvstat.us/2/main3.srv.morino.party"
     );
-    console.log(main.data.players.list);
+    this.playermain = main.data.players.list;
+
     const res = await axios.get(
       "https://api.mcsrvstat.us/2/res2.srv.morino.party"
     );
-    console.log(res.data.players.list);
+    this.playerres = res.data.players.list;
+
+    this.playerlist = this.playermain.concat(this.playerres);
+    console.log(this.playerlist);
   }
 };
 </script>
