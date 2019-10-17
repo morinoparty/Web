@@ -108,19 +108,24 @@ export default {
     MoriFooter,
     bottompromo
   },
-  props: {
-    id: {
-      type: String,
-      default: ""
-    }
-  },
-  transition: "slide-right",
-  async asyncData({ env, params }) {
-    return await client
-      .getEntry(params.sys)
-      .then(entrie => {
+  // `env` is available in the context object
+  asyncData({ env }) {
+    return Promise.all([
+      // fetch the owner of the blog
+      client.getEntries({
+        "sys.id": env.CTF_PERSON_ID
+      }),
+      // fetch all blog posts sorted by creation date
+      client.getEntries({
+        morinoparty: env.CTF_BLOG_POST_TYPE_ID,
+        order: "-sys.createdAt"
+      })
+    ])
+      .then(posts => {
+        // return data that should be available
+        // in the template
         return {
-          article: entrie
+          posts: posts.items
         };
       })
       .catch(console.error);
