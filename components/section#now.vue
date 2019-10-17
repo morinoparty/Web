@@ -22,12 +22,20 @@
             <figure class="user">
               <h3>オンラインのユーザー</h3>
               <br />
-              <div v-for="playermain of items" :key="playermain">
-                <img class="head" :src="'https://minotar.net/cube/'+playermain+'/64.png'" alt />
-              </div>
-              <div v-for="playerres of items" :key="playerres">
-                <img class="head" :src="'https://minotar.net/cube/'+playerres+'/64.png'" alt />
-              </div>
+              <img
+                v-for="playermain in playermain"
+                :key="playermain"
+                class="head"
+                :src="'https://minotar.net/cube/'+playermain+'/100.png'"
+                alt
+              />
+              <img
+                v-for="playerres in playerres"
+                :key="playerres"
+                class="head"
+                :src="'https://minotar.net/cube/'+playerres+'/100.png'"
+                alt
+              />
             </figure>
           </div>
         </div>
@@ -63,10 +71,12 @@ export default {
       "https://api.mcsrvstat.us/2/main3.srv.morino.party"
     );
     this.playermain = main.data.players.list;
+    console.log(this.playermain);
     const res = await axios.get(
       "https://api.mcsrvstat.us/2/res2.srv.morino.party"
     );
     this.playerres = res.data.players.list;
+    console.log(this.playerres);
   }
 };
 </script>
