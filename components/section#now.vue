@@ -22,13 +22,11 @@
             <figure class="user">
               <h3>オンラインのユーザー</h3>
               <br />
-              <div id="v-for-object" class="demo">
-                <div v-for="(playermain) in items" :key="playermain">
-                  <img class="head" :src="'https://minotar.net/cube/'+items+'/64.png'" alt />
-                </div>
-                <div v-for="(playerres) in items" :key="playerres">
-                  <img class="head" :src="'https://minotar.net/cube/'+items+'/64.png'" alt />
-                </div>
+              <div v-for="playermain of items" :key="playermain">
+                <img class="head" :src="'https://minotar.net/cube/'+playermain+'/64.png'" alt />
+              </div>
+              <div v-for="playerres of items" :key="playerres">
+                <img class="head" :src="'https://minotar.net/cube/'+playerres+'/64.png'" alt />
               </div>
             </figure>
           </div>
@@ -48,7 +46,8 @@ export default {
   data() {
     return {
       count: null,
-      players: {},
+      playermain: {},
+      playerres: {},
       version: null
     };
   },

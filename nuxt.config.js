@@ -3,14 +3,13 @@ export default {
    ** Headers of the page
    
    */
-    /*
-     ** Rendering mode
-     ** Doc: https://nuxtjs.org/api/configuration-mode
-     */
-    mode: "universal",
+  /*
+   ** Rendering mode
+   ** Doc: https://nuxtjs.org/api/configuration-mode
+   */
+  mode: "universal",
 
   head: {
-    
     title: "もりのパーティ!",
     meta: [
       { charset: "utf-8" },
@@ -21,14 +20,15 @@ export default {
         content: "もりのパーティ!は、日本最大級のバニラ生活サーバーです。"
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico"}]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
-  buildModules: ["bootstrap-vue/nuxt", "@nuxtjs/style-resources", "@nuxtjs/axios", "@nuxtjs/vuetify"],
-  
+  buildModules: [
+    "bootstrap-vue/nuxt",
+    "@nuxtjs/style-resources",
+    "@nuxtjs/axios"
+  ],
 
   plugins: [{ src: "~/plugins/modernizr-plugin.js", ssr: false }],
-
-  
 
   env: {
     //apiBaseUrl: 'https://api.mcsrvstat.us/2/'
@@ -57,7 +57,7 @@ export default {
      ** You can extend webpack config here
      ** Run ESLint on save
      */
-    extend (config, { isDev, isClient }) {
+    extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
           enforce: "pre",
@@ -68,5 +68,4 @@ export default {
       }
     }
   }
-  
 };
