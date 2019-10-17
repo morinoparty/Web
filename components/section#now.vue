@@ -23,17 +23,10 @@
               <h3>オンラインのユーザー</h3>
               <br />
               <img
-                v-for="playermain in playermain"
-                :key="playermain"
+                v-for="playerlist in playerlist"
+                :key="playerlist"
                 class="head"
-                :src="'https://minotar.net/cube/'+playermain+'/100.png'"
-                alt
-              />
-              <img
-                v-for="playerres in playerres"
-                :key="playerres"
-                class="head"
-                :src="'https://minotar.net/cube/'+playerres+'/100.png'"
+                :src="'https://minotar.net/cube/'+playerlist+'/100.png'"
                 alt
               />
             </figure>
@@ -54,8 +47,7 @@ export default {
   data() {
     return {
       count: null,
-      playermain: {},
-      playerres: {},
+      playerlist: {},
       version: null
     };
   },
@@ -71,12 +63,14 @@ export default {
       "https://api.mcsrvstat.us/2/main3.srv.morino.party"
     );
     this.playermain = main.data.players.list;
-    console.log(this.playermain);
+
     const res = await axios.get(
       "https://api.mcsrvstat.us/2/res2.srv.morino.party"
     );
     this.playerres = res.data.players.list;
-    console.log(this.playerres);
+
+    this.playerlist = this.playermain.concat(this.playerres);
+    console.log(this.playerlist);
   }
 };
 </script>
