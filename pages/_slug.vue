@@ -1,0 +1,134 @@
+<template>
+  <div>
+    <nav id="page_nav" class="post global d-flex justify-content-start">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 921.13 136.97">
+        <link type="text/css" id="dark-mode" rel="stylesheet" href />
+        <g id="moripalogo" data-name="moripalogo">
+          <g id="title">
+            <g id="title-2" data-name="title">
+              <path
+                class="cls-1"
+                d="M0,37.69,10,22a21.93,21.93,0,0,1,5-.38c12,0,21.62,8.22,21.62,18.36,0,4.4-1.72,9.18-6.12,13.78ZM64.09,83.6c0,1-.2,1.72-.2,2.68,0,17.6,14,26.59,26.59,26.59,6.13,0,12.06-2.3,15.69-6.51a25.43,25.43,0,0,1,.58,5.17c0,10.71-10,19.32-29.66,19.32-26,0-42.85-16.07-44.57-45.15L5,87.42l2.3-18.17H36C36.73,50.31,44,26,48.4,11.1l31.18,6.5c-6.12,20.09-11.48,32.9-13.2,52,11.29.39,21.81.58,29.65,1l1,10.9Z"
+              />
+              <path
+                class="cls-1"
+                d="M166.63,76.9a20.1,20.1,0,0,1-18,10.72c-7.46,0-14.53-4.21-16.64-13-1.15-5.36-1.53-13.59-1.53-21.81,0-10.52.57-21,1.15-26l27,1.15c-.19,4.21-.19,9-.19,14.35,0,9.37.19,20.47,1,32.52Zm51.84-58.34c2.29,11.09,6.31,39.79,6.31,62.17q0,7.17-.57,13.2c-2.11,22.38-20.66,33.67-35,35.77.76-10.71,1-21.62,1-32.71,0-28.5-1.92-56.43-3.64-76.52Z"
+              />
+              <path
+                class="cls-1"
+                d="M323.8,77.06c-24.32,17.48-41,22.17-41,22.17-10.14-8.74-14.19-18.5-14.19-27.75,0-17.48,16-36,38.38-36,20.4,0,40.42,15.08,40.42,38.52,0,15.71-9.25,31.54-20.91,31.54-3.67,0-6.84-1.52-7.6-3.92,8.87-2.67,16.47-13.94,16.47-26.48,0-17.11-13.3-26.36-26.22-26.36s-21.54,9.38-21.54,19.26c0,5.32,2.53,10.64,8.23,14.32,0,0,8.62-2.41,21.92-13.43Z"
+              />
+              <path
+                class="cls-1"
+                d="M446.3,73.46c-4.39,12.62-13.77,22.76-20.08,25.44a39.38,39.38,0,0,1-16.84,3.64c-13,0-23.91-6.51-28.88-13,14.54-7.65,32.71-30,36.15-37.11Zm25.83-5.36,20.28-22.95c23.91,8.61,32.71,22,32.71,33.86,0,9.75-5.93,18.55-14.35,22.95Zm48.59-29.46c-11.86,0-20.09-6.69-20.09-17.6,0-12.43,10.91-21,20.28-21,13.58,0,20.85,10.33,20.85,18.17C541.76,23.53,538.89,38.64,520.72,38.64Zm9-20.28c0-8.6-9.18-8.79-10.33-8.79-5.16,0-9.75,4.78-9.75,10.71,0,6.12,5,8.8,10.33,8.8C525.12,29.08,529.71,24.87,529.71,18.36Z"
+              />
+              <path
+                class="cls-1"
+                d="M553.63,78.43l1.72-23c21.81-1.72,89-4.59,113.06-4.59l3.83,22.76Z"
+              />
+              <path
+                class="cls-1"
+                d="M776.5,77.48c0,1.91.19,3.63.19,5.54a127.31,127.31,0,0,1-2.3,24.68C769.8,125.88,754.88,137,738.81,137a37.56,37.56,0,0,1-6.5-.57c6.69-15.5,7.46-37.12,7.65-58.35L699,79.77l-2.87-23.72c21.81.19,87.62,1.15,118,2.68l.39,15.69ZM715.28,38.26,716.62,10C721.4,9.57,744.17,8,758.52,8,778,8,784.34,19.9,784.34,30.23a28.87,28.87,0,0,1-.57,5.54Z"
+              />
+              <path
+                class="cls-1"
+                d="M871.39,136c.38-10.9,1.53-34.24,1.72-46.86A66.87,66.87,0,0,1,858,91.25c-16.26,0-22-8.61-24.87-18.56,16.26-.76,58.54-16.06,77.28-26.4l10.72,21.05c-7.27,6.12-19.9,12.62-32.52,17.21h11.47c1,4,1.15,9,1.15,14.35,0,17.22-3.63,37.11-3.63,37.11Z"
+              />
+            </g>
+          </g>
+        </g>
+      </svg>
+      <div class="d-flex justify-content-start scl">
+        <a href="http://morino.party">
+          <div class="li">ホーム</div>
+        </a>
+        <a href="http://morino.party">
+          <div class="li">ホーム</div>
+        </a>
+        <a href="http://morino.party">
+          <div class="li">ホーム</div>
+        </a>
+        <a href="http://morino.party">
+          <div class="li">ホーム</div>
+        </a>
+        <a href="http://morino.party">
+          <div class="li">ホーム</div>
+        </a>
+        <a href="http://morino.party">
+          <div class="li">ホーム</div>
+        </a>
+        <a href="http://morino.party">
+          <div class="li">ホーム</div>
+        </a>
+        <a href="http://morino.party">
+          <div class="li">ホーム</div>
+        </a>
+        <a href="http://morino.party">
+          <div class="li">ホーム</div>
+        </a>
+        <a href="http://morino.party">
+          <div class="li">ホーム</div>
+        </a>
+        <a href="http://morino.party">
+          <div class="li">ホーム</div>
+        </a>
+        <a href="http://morino.party">
+          <div class="li">ホーム</div>
+        </a>
+      </div>
+    </nav>
+    <header class="sm">
+      <div class="post_info">
+        <div class="container">
+          <h1>{{ posts.fields.title }}</h1>
+          <p>{{ article.fields.shortDiscription }}</p>
+        </div>
+      </div>
+      <div class="bg_color"></div>
+      <div class="bg"></div>
+    </header>
+    <article>
+      <div class="post">
+        <div class="container">{{ article.fields.body }}</div>
+      </div>
+    </article>
+    <bottompromo />
+    <MoriFooter />
+  </div>
+</template>
+
+<script>
+import MoriFooter from "~/components/footer.vue";
+import bottompromo from "~/components/bottompromo.vue";
+import { createClient } from "~/plugins/contentful.js";
+
+const client = createClient();
+export default {
+  components: {
+    MoriFooter,
+    bottompromo
+  },
+  // `env` is available in the context object
+  asyncData({ env }) {
+    return Promise.all([
+      // fetch the owner of the blog
+      client.getEntries({
+        "sys.id": env.CTF_PERSON_ID
+      }),
+      // fetch all blog posts sorted by creation date
+      client.getEntries({
+        morinoparty: env.CTF_BLOG_POST_TYPE_ID,
+        order: "-sys.createdAt"
+      })
+    ])
+      .then(posts => {
+        // return data that should be available
+        // in the template
+        return {
+          posts: posts.items
+        };
+      })
+      .catch(console.error);
+  }
+};
+</script>
