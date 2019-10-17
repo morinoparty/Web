@@ -3,7 +3,16 @@ body {
     Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-
+_::-webkit-full-page-media,
+_:future,
+:root {
+  &header .bg:before {
+    background: url(/assets/firstbackground.jpg) center/cover no-repeat !important;
+  }
+  &section#now .bg {
+    background-image: url(/assets/seccondbackground.png) !important;
+  }
+}
 header {
   z-index: 2;
   overflow: hidden;
@@ -31,10 +40,7 @@ header {
     transform: translate3d(0, 0, -1px);
     width: 100%;
     height: 100vh;
-    background: url(/static/assets/firstbackground.webp) center/cover no-repeat;
-    @media screen and (-webkit-min-device-pixel-ratio: 0) {
-      background: url(/static/assets/firstbackground.jpg) center/cover no-repeat !important;
-    }
+    background: url(/assets/firstbackground.webp) center/cover no-repeat;
   }
   .bg_color {
     z-index: 1;
@@ -275,9 +281,6 @@ section#now {
     background-size: cover;
     bottom: 0;
     background-image: url(/assets/seccondbackground.webp);
-    @media screen and (-webkit-min-device-pixel-ratio: 0) {
-      background-image: url(/assets/seccondbackground.png) !important;
-    }
   }
   .bg_color {
     z-index: 2;
