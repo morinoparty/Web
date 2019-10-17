@@ -74,6 +74,11 @@ export default {
           loader: "eslint-loader",
           exclude: /(node_modules)/
         });
+        config.module.rules.push({
+          test: /.modernizrrc.js$/,
+          use: { loader: "webpack-modernizr-loader" }
+        });
+        config.resolve.alias["modernizr"] = "/.modernizrrc.js";
       }
     }
   }
