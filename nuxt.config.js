@@ -1,3 +1,5 @@
+const config = require(".contentful.json");
+
 export default {
   /*
    ** Headers of the page
@@ -7,7 +9,7 @@ export default {
    ** Rendering mode
    ** Doc: https://nuxtjs.org/api/configuration-mode
    */
-  mode: "universal",
+  mode: "spa",
 
   head: {
     title: "もりのパーティ!",
@@ -31,6 +33,10 @@ export default {
   plugins: [{ src: "~/plugins/modernizr-plugin.js", ssr: false }],
 
   env: {
+    CTF_SPACE_ID: config.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
+    CTF_PERSON_ID: config.CTF_PERSON_ID,
+    CTF_BLOG_POST_TYPE_ID: config.CTF_BLOG_POST_TYPE_ID
     //apiBaseUrl: 'https://api.mcsrvstat.us/2/'
   },
 
@@ -64,13 +70,12 @@ export default {
           test: /\.(js|vue)$/,
           loader: "eslint-loader",
           exclude: /(node_modules)/
-        })
+        });
         config.module.rules.push({
-          test:/.modernizrrc.js$/,
-          use: {loader: 'webpack-modernizr-loader'}
-
-        })
-        config.resolve.alias['modernizr'] = '/.modernizrrc.js'
+          test: /.modernizrrc.js$/,
+          use: { loader: "webpack-modernizr-loader" }
+        });
+        config.resolve.alias["modernizr"] = "/.modernizrrc.js";
       }
     }
   }

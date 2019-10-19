@@ -14,13 +14,15 @@ import axios from "axios";
 export default {
   data() {
     return {
-        info: null
-    }
+      info: null
+    };
   },
   async created() {
-    const response = await axios.get('https://api.mcsrvstat.us/2/visit.morino.party')
-   console.log(response.data.players.online)
-    this.info = response.data.players.online
+    const response = await axios.get(
+      "https://api.mcsrvstat.us/2/visit.morino.party"
+    );
+    console.log(response.data.players.online);
+    this.info = response.data.players.online;
   }
 };
 </script>
