@@ -1,4 +1,5 @@
-const config = require(".contentful.json");
+const apiUrl = "https://morino.party";
+import axios from "axios";
 
 export default {
   /*
@@ -27,19 +28,42 @@ export default {
   buildModules: [
     "bootstrap-vue/nuxt",
     "@nuxtjs/style-resources",
-    "@nuxtjs/axios"
+    "@nuxtjs/axios",
+    "@nuxtjs/markdownit"
   ],
 
   plugins: [{ src: "~/plugins/modernizr-plugin.js", ssr: false }],
-
-  env: {
-    CTF_SPACE_ID: config.CTF_SPACE_ID,
-    CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
-    CTF_PERSON_ID: config.CTF_PERSON_ID,
-    CTF_BLOG_POST_TYPE_ID: config.CTF_BLOG_POST_TYPE_ID
-    //apiBaseUrl: 'https://api.mcsrvstat.us/2/'
+  markdownit: {
+    injected: true,
+    html: true,
+    linkify: true,
+    typography: true
   },
-
+  generate: {
+    interval: 1000,
+    routes() {
+      return Promise.all([
+        axios.get(`${apiUrl}/wp-json/wp/v2/pages?per_page=100&page=1&_embed=1`)
+      ]).then(data => {
+        const posts = data[0];
+        return posts.data
+          .map(post => {
+            return {
+              route: "/post/" + post.slug,
+              payload: post
+            };
+          })
+          .concat(
+            pages.data.map(page => {
+              return {
+                route: page.slug,
+                payload: page
+              };
+            })
+          );
+      });
+    }
+  },
   axios: {
     //baseURL: 'https://api.mcsrvstat.us/2/visit.morino.party',
     // proxyHeaders: false

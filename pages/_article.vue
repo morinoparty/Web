@@ -80,8 +80,8 @@
     <header class="sm">
       <div class="post_info">
         <div class="container">
-          <h1>{{ posts.fields.title }}</h1>
-          <p>{{ posts.fields.shortDiscription }}</p>
+          <h1 v-html="article.title"></h1>
+          <p>test</p>
         </div>
       </div>
       <div class="bg_color"></div>
@@ -89,7 +89,7 @@
     </header>
     <article>
       <div class="post">
-        <div class="container">{{ posts.fields.body }}</div>
+        <div class="container" v-html="article.content"></div>
       </div>
     </article>
     <bottompromo />
@@ -98,37 +98,66 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import MoriFooter from "~/components/footer.vue";
 import bottompromo from "~/components/bottompromo.vue";
-import { createClient } from "~/plugins/contentful.js";
 
-const client = createClient();
 export default {
+  async asyncData({ app, store, params, route }) {
+    store.commit("setCurrentPath", route.path);
+    const query = {
+      slug: params.article,
+      _embed: 1
+    };
+    if (!store.state.cachePosts[params.article]) {
+      const posts = await app.$api.get(`/pages`, query);
+      store.commit("setCachePages", {
+        path: route.path,
+        posts: posts.data
+      });
+      store.commit("setCachePosts", posts.data);
+    }
+    if (!store.state.cachePages[store.state.currentPath]) {
+      store.commit("setCachePages", {
+        path: route.path,
+        posts: [store.state.cachePosts[params.article]]
+      });
+    }
+    store.commit("setCurrentPosts");
+    store.commit("setCurrentQuery", query);
+  },
+  mixins: {
+    longTimestamp: Function
+  },
   components: {
+    // ArticleComments,
     MoriFooter,
     bottompromo
   },
-  // `env` is available in the context object
-  asyncData({ env }) {
-    return Promise.all([
-      // fetch the owner of the blog
-      client.getEntries({
-        "sys.id": env.CTF_PERSON_ID
-      }),
-      // fetch all blog posts sorted by creation date
-      client.getEntries({
-        morinoparty: env.CTF_BLOG_POST_TYPE_ID,
-        order: "-sys.createdAt"
-      })
-    ])
-      .then(posts => {
-        // return data that should be available
-        // in the template
-        return {
-          posts: posts.items
-        };
-      })
-      .catch(console.error);
-  }
+  computed: {
+    article() {
+      const page =
+        this.$store.state.cachePages[this.$store.state.currentPath] || {};
+      const slug = page.slugs ? page.slugs[0] : null;
+      return this.$store.state.cachePosts[slug] || {};
+      // return this.$store.getters.post || {}
+    },
+    ...mapState(["currentPath", "cachePages"])
+  },
+  data() {
+    return {
+      disqusReady: false,
+      expanded: false
+    };
+  },
+  head() {
+    return {
+      title: `${this.article.title} | ${this.$store.state.meta.name}`,
+      meta: [{ description: this.article.excerpt }]
+    };
+  },
+  methods: {},
+  created() {},
+  watch: {}
 };
 </script>
