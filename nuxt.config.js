@@ -1,6 +1,13 @@
 const apiUrl = "https://morino.party";
 import axios from "axios";
 
+const CONSTANTS = {
+  POSTS_PER_PAGE: JSON.stringify(process.env.POSTS_PER_PAGE),
+  REQUEST_CACHE_MAX: JSON.stringify(process.env.REQUEST_CACHE_MAX),
+  REST_ENDPOINT: JSON.stringify(process.env.REST_ENDPOINT),
+  GA_TRACKING_ID: JSON.stringify(process.env.GA_TRACKING_ID)
+};
+
 export default {
   /*
    ** Headers of the page
