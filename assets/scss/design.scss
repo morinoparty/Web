@@ -15,6 +15,9 @@ html {
     section.about.third .image {
       background-image: url(/assets/background_ap_3.webp);
     }
+    section.morinopromo {
+      background-image: url(/assets/seccondbackground.webp);
+    }
   }
   &.no-webp {
     header .bg:before {
@@ -31,6 +34,9 @@ html {
     }
     section.about.third .image {
       background-image: url(/assets/background_ap_3.jpg);
+    }
+    section.morinopromo {
+      background-image: url(/assets/seccondbackground.jpg);
     }
   }
 }
@@ -599,7 +605,6 @@ section.morinopromo {
   padding-bottom: 50px;
   z-index: 5;
   position: relative;
-  background-image: url(/assets/seccondbackground.webp);
   background-size: cover;
   background-position: top;
   text-align: left;
