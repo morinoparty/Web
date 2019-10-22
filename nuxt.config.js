@@ -19,15 +19,7 @@ export default {
     "@nuxtjs/style-resources",
     "@nuxtjs/axios"
   ],
-
   plugins: [{ src: "~/plugins/modernizr-plugin.js", ssr: false }],
-  markdownit: {
-    injected: true,
-    html: true,
-    linkify: true,
-    typography: true
-  },
-
   css: [{ src: "~/assets/scss/design.scss", lang: "scss" }],
 
   vuetify: {
@@ -38,6 +30,11 @@ export default {
    ** Customize the progress bar color
    */
   loading: { color: "#3B8070" },
+
+  generate: {
+    fallback: true
+  },
+
   /*
    ** Build configuration
    */
