@@ -13,7 +13,7 @@
       <div class="bg"></div>
     </header>
     <navbar type="index" position="center"></navbar>
-    <section class="about">
+    <section class="about first">
       <div class="content">
         <div class="container">
           <h2>
@@ -23,9 +23,9 @@
           <p>ふと、日常から離れて目の前の現実から離れる、そんな瞬間が、このサーバーに。</p>
         </div>
       </div>
-      <div class="image" style="background-image: url(/assets/background_ap_2.webp);"></div>
+      <div class="image"></div>
     </section>
-    <section class="about">
+    <section class="about seccond">
       <div class="content">
         <div class="container">
           <h2>
@@ -35,9 +35,9 @@
           <p>メインマップは純粋な1.14のマップ。その広大な世界を開拓するのはあなたです。</p>
         </div>
       </div>
-      <div class="image" style="background-image: url(/assets/background_ap_1.webp);"></div>
+      <div class="image"></div>
     </section>
-    <section class="about">
+    <section class="about third">
       <div class="content">
         <div class="container">
           <h2>
@@ -47,7 +47,7 @@
           <p>YouTubeで活躍中のいろんなクラフターとコラボなど、様々なイベントを開催予定です！</p>
         </div>
       </div>
-      <div class="image" style="background-image: url(/assets/background_ap_3.webp);"></div>
+      <div class="image"></div>
     </section>
     <section id="rules">
       <div class="container">
