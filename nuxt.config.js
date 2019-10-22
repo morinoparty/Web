@@ -22,6 +22,12 @@ export default {
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
+  buildModules: [
+    "bootstrap-vue/nuxt",
+    "@nuxtjs/style-resources",
+    "@nuxtjs/axios",
+    "@nuxtjs/markdownit"
+  ],
 
   plugins: [{ src: "~/plugins/modernizr-plugin.js", ssr: false }],
   markdownit: {
@@ -29,6 +35,13 @@ export default {
     html: true,
     linkify: true,
     typography: true
+  },
+  generate: {
+    routes: function() {
+      return {
+        route: "/" + slug
+      };
+    }
   },
 
   css: [{ src: "~/assets/scss/design.scss", lang: "scss" }],
@@ -65,11 +78,6 @@ export default {
       }
     }
   },
-  buildModules: [
-    "bootstrap-vue/nuxt",
-    "@nuxtjs/style-resources",
-    "@nuxtjs/axios",
-    "@nuxtjs/markdownit"
-  ],
+  modules: ["@nuxtjs/axios"],
   axios: {}
 };
