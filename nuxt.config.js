@@ -1,12 +1,4 @@
 export default {
-  /*
-   ** Headers of the page
-   
-   */
-  /*
-   ** Rendering mode
-   ** Doc: https://nuxtjs.org/api/configuration-mode
-   */
   mode: "spa",
 
   head: {
@@ -25,8 +17,7 @@ export default {
   buildModules: [
     "bootstrap-vue/nuxt",
     "@nuxtjs/style-resources",
-    "@nuxtjs/axios",
-    "@nuxtjs/markdownit"
+    "@nuxtjs/axios"
   ],
 
   plugins: [{ src: "~/plugins/modernizr-plugin.js", ssr: false }],

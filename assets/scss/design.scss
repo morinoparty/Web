@@ -67,6 +67,16 @@ header {
     .container {
       max-width: 700px;
     }
+    .box {
+      width: 60%;
+      height: 2.5rem;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 10px;
+      animation-name: loadingbox;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate-reverse;
+    }
   }
   .title {
     z-index: 2;
@@ -418,6 +428,7 @@ article {
   .wp-block-image img {
     max-width: initial;
   }
+
   img {
     height: auto;
     width: calc(100% + 30px);
@@ -465,6 +476,36 @@ article {
     margin-bottom: 1rem;
     line-height: 2;
   }
+
+  .box {
+    width: 60%;
+    height: 3rem;
+    background-color: #007907;
+    opacity: 0.3;
+    border-radius: 10px;
+    margin-bottom: 3rem;
+    animation-name: loadingbox;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    @keyframes loadingbox {
+      0% {
+        opacity: 0.1;
+      }
+      100% {
+        opacity: 0.3;
+      }
+    }
+    @for $i from 1 through 10 {
+      &.ps-#{$i} {
+        width: percentage(random(100) / 100);
+        height: 1.5rem;
+        margin-bottom: 1.5rem;
+        animation-delay: random(100) / 100 + s;
+      }
+    }
+  }
+
   .col-md-6 {
     padding-left: 15px;
     padding-right: 15px;
