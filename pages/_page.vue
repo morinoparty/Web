@@ -80,8 +80,7 @@
     <header class="sm">
       <div class="post_info">
         <div class="container">
-          <h1 v-html="article.title"></h1>
-          <p>test</p>
+          <h1>{{title}}</h1>
         </div>
       </div>
       <div class="bg_color"></div>
@@ -89,7 +88,7 @@
     </header>
     <article>
       <div class="post">
-        <div class="container" v-html="article.content"></div>
+        <div class="container" v-html="content"></div>
       </div>
     </article>
     <bottompromo />
@@ -98,66 +97,29 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
 import MoriFooter from "~/components/footer.vue";
 import bottompromo from "~/components/bottompromo.vue";
+import axios from "axios";
 
 export default {
-  async asyncData({ app, store, params, route }) {
-    store.commit("setCurrentPath", route.path);
-    const query = {
-      slug: params.article,
-      _embed: 1
-    };
-    if (!store.state.cachePosts[params.article]) {
-      const posts = await app.$api.get(`/pages`, query);
-      store.commit("setCachePages", {
-        path: route.path,
-        posts: posts.data
-      });
-      store.commit("setCachePosts", posts.data);
-    }
-    if (!store.state.cachePages[store.state.currentPath]) {
-      store.commit("setCachePages", {
-        path: route.path,
-        posts: [store.state.cachePosts[params.article]]
-      });
-    }
-    store.commit("setCurrentPosts");
-    store.commit("setCurrentQuery", query);
-  },
-  mixins: {
-    longTimestamp: Function
-  },
   components: {
-    // ArticleComments,
     MoriFooter,
     bottompromo
   },
-  computed: {
-    article() {
-      const page =
-        this.$store.state.cachePages[this.$store.state.currentPath] || {};
-      const slug = page.slugs ? page.slugs[0] : null;
-      return this.$store.state.cachePosts[slug] || {};
-      // return this.$store.getters.post || {}
-    },
-    ...mapState(["currentPath", "cachePages"])
-  },
   data() {
     return {
-      disqusReady: false,
-      expanded: false
+      content: null,
+      title: null
     };
   },
-  head() {
-    return {
-      title: `${this.article.title} | ${this.$store.state.meta.name}`,
-      meta: [{ description: this.article.excerpt }]
-    };
-  },
-  methods: {},
-  created() {},
-  watch: {}
+  async created() {
+    const response = await axios.get(
+      `https://morino.party/wp-json/wp/v2/pages?slug=${this.$route.path}`
+    );
+
+    console.log(response);
+    this.content = response.data[0].content.rendered;
+    this.title = response.data[0].title.rendered;
+  }
 };
 </script>

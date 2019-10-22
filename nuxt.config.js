@@ -1,13 +1,3 @@
-const apiUrl = "https://morino.party";
-import axios from "axios";
-
-const CONSTANTS = {
-  POSTS_PER_PAGE: JSON.stringify(process.env.POSTS_PER_PAGE),
-  REQUEST_CACHE_MAX: JSON.stringify(process.env.REQUEST_CACHE_MAX),
-  REST_ENDPOINT: JSON.stringify(process.env.REST_ENDPOINT),
-  GA_TRACKING_ID: JSON.stringify(process.env.GA_TRACKING_ID)
-};
-
 export default {
   /*
    ** Headers of the page
@@ -47,37 +37,25 @@ export default {
     typography: true
   },
   generate: {
-    interval: 1000,
-    routes() {
-      return Promise.all([
-        axios.get(`${apiUrl}/wp-json/wp/v2/posts?per_page=100&page=1&_embed=1`),
-        axios.get(`${apiUrl}/wp-json/wp/v2/pages?per_page=100&page=1&_embed=1`)
-      ]).then(data => {
-        const posts = data[0];
-        const pages = data[1];
-        return posts.data
-          .map(post => {
-            return {
-              route: "/post/" + post.slug,
-              payload: post
-            };
-          })
-          .concat(
-            pages.data.map(page => {
-              return {
-                route: page.slug,
-                payload: page
-              };
-            })
-          );
-      });
+    routes: async function() {
+      const wpArticles = axios
+        .get("morino.party/wp/v2/posts", {
+          params: {
+            fields: "slug"
+          }
+        })
+        .then(articles => {
+          return articles.map(article => {
+            return `/${article.slug}`;
+          });
+        })
+        .catch(e => {
+          throw e;
+        });
+      return wpArticles;
     }
   },
-  axios: {
-    //baseURL: 'https://api.mcsrvstat.us/2/visit.morino.party',
-    // proxyHeaders: false
-    //apiBaseUrl: 'https://api.mcsrvstat.us/2/visit.morino.party'
-  },
+
   css: [{ src: "~/assets/scss/design.scss", lang: "scss" }],
 
   vuetify: {
@@ -111,5 +89,7 @@ export default {
         config.resolve.alias["modernizr"] = "/.modernizrrc.js";
       }
     }
-  }
+  },
+  modules: ["@nuxtjs/axios"],
+  axios: {}
 };
