@@ -12,7 +12,7 @@
       <div class="bg_color"></div>
       <div class="bg"></div>
     </header>
-    <navbar type="index"></navbar>
+    <navbar type="index" position="center"></navbar>
     <section class="about">
       <div class="content">
         <div class="container">
@@ -69,7 +69,12 @@
           参加する際に「必須」な参加条件や、絶対にやらなければいけないことを説明しています！
           <strong>絶対</strong>確認してください！
         </p>
-        <a style="color: #58c8ec" class="btn btn-light btn-lg" href="/first" role="button">いますぐ確認</a>
+        <nuxt-link
+          style="color: #58c8ec"
+          class="btn btn-light btn-lg"
+          to="/first"
+          role="button"
+        >いますぐ確認</nuxt-link>
       </div>
     </section>
     <section id="links" class="dark">
@@ -116,10 +121,10 @@
                   <img src="/assets/section_link_command.svg" class="svgtitle" alt />
                 </h2>
                 <p style="margin-bottom: 25px">サーバー内で使える最強で便利なコマンドをご紹介！</p>
-                <a
+                <nuxt-link
                   style="color: #FF8DAD"
                   class="btn btn-light btn-lg"
-                  href="/command"
+                  to="/command"
                   role="button"
                 >
                   <svg
@@ -138,7 +143,7 @@
                     />
                   </svg>
                   いますぐ確認
-                </a>
+                </nuxt-link>
               </div>
             </div>
           </div>
@@ -149,7 +154,12 @@
                   <img src="/assets/section_link_vote.svg" class="svgtitle" alt />
                 </h2>
                 <p style="margin-bottom: 25px">サーバーに投票すると、とってもいいことがあります！</p>
-                <a style="color: #428BCA" class="btn btn-light btn-lg" href="/vote" role="button">
+                <nuxt-link
+                  style="color: #428BCA"
+                  class="btn btn-light btn-lg"
+                  to="/vote"
+                  role="button"
+                >
                   <svg
                     class="svg-inline--fa fa-vote-yea fa-w-20"
                     aria-hidden="true"
@@ -167,7 +177,7 @@
                   </svg>
                   <!-- <i class="fas fa-vote-yea"></i> -->
                   いますぐ確認
-                </a>
+                </nuxt-link>
               </div>
             </div>
           </div>
@@ -178,10 +188,10 @@
                   <img src="/assets/section_link_forstreamer.svg" class="svgtitle" alt />
                 </h2>
                 <p style="margin-bottom: 25px">配信者の方に知ってほしい、このサーバーでできること！</p>
-                <a
+                <nuxt-link
                   style="color: #FFAF62"
                   class="btn btn-light btn-lg"
-                  href="/forstreamers"
+                  to="/forstreamers"
                   role="button"
                 >
                   <svg
@@ -201,7 +211,7 @@
                   </svg>
                   <!-- <i class="fab fa-youtube"></i> -->
                   いますぐ確認
-                </a>
+                </nuxt-link>
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 <template>
-  <nav id="page_nav" :class="type" class="global d-flex justify-content-start">
-    <a href="https://morino.party" class="logo">
+  <nav id="page_nav" :class="`global d-flex scl justify-content-start ${type}`">
+    <nuxt-link to="/" class="logo">
       <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 921.13 136.97">
         <link type="text/css" id="dark-mode" rel="stylesheet" href />
         <g id="moripalogo" data-name="moripalogo">
@@ -38,52 +38,45 @@
           </g>
         </g>
       </svg>
-    </a>
+    </nuxt-link>
     <div class="d-flex justify-content-start scl">
-      <a href="http://morino.party">
-        <div class="li">ホーム</div>
-      </a>
-      <a href="http://morino.party">
-        <div class="li">ホーム</div>
-      </a>
-      <a href="http://morino.party">
-        <div class="li">ホーム</div>
-      </a>
-      <a href="http://morino.party">
-        <div class="li">ホーム</div>
-      </a>
-      <a href="http://morino.party">
-        <div class="li">ホーム</div>
-      </a>
-      <a href="http://morino.party">
-        <div class="li">ホーム</div>
-      </a>
-      <a href="http://morino.party">
-        <div class="li">ホーム</div>
-      </a>
-      <a href="http://morino.party">
-        <div class="li">ホーム</div>
-      </a>
-      <a href="http://morino.party">
-        <div class="li">ホーム</div>
-      </a>
-      <a href="http://morino.party">
-        <div class="li">ホーム</div>
-      </a>
-      <a href="http://morino.party">
-        <div class="li">ホーム</div>
-      </a>
-      <a href="http://morino.party">
-        <div class="li">ホーム</div>
-      </a>
+      <component
+        v-for="(link, i) in links"
+        :key="`bad-sample_${i}`"
+        :is="isInternalLink(link.path) ? 'nuxt-link' : 'a'"
+        :to="isInternalLink(link.path) ? link.path : ''"
+        :href="isInternalLink(link.path) ? '' : link.path"
+      >
+        <div class="li">{{ link.label }}</div>
+      </component>
     </div>
   </nav>
 </template>
 
 <script>
-import Vue from "vue";
-
 export default {
-  props: ["type"]
+  props: ["type"],
+  data() {
+    return {
+      links: [
+        { label: "はじめての方へ!", path: "/first" },
+        { label: "コマンド", path: "/command" },
+        { label: "保護のかけ方", path: "/protect" },
+        { label: "お金関連", path: "/createshop" },
+        { label: "釣り大会", path: "/fishing" },
+        { label: "配信者向け", path: "/forstreamers" },
+        { label: "投票ボーナス", path: "/vote" },
+        { label: "寄付", path: "/donate" },
+        { label: "discord", path: "/discord" },
+        { label: "運営チーム", path: "/team" },
+        { label: "Status", path: "/status" }
+      ]
+    };
+  },
+  methods: {
+    isInternalLink(path) {
+      return !/^https?:\/\//.test(path);
+    }
+  }
 };
 </script>

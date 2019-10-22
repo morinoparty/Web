@@ -321,6 +321,12 @@ nav#page_nav {
     transform: translateY(-39px);
     position: fixed;
   }
+  &.index {
+    justify-content: center !important;
+    .logo {
+      display: none;
+    }
+  }
 
   &::-webkit-scrollbar {
     display: none;
