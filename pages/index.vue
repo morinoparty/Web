@@ -12,46 +12,7 @@
       <div class="bg_color"></div>
       <div class="bg"></div>
     </header>
-    <nav id="page_nav" class="global d-flex justify-content-center top">
-      <div class="d-flex justify-content-start scl">
-        <a href="http://morino.party">
-          <div class="li">ホーム</div>
-        </a>
-        <a href="https://morino.party/first/">
-          <div class="li">はじめての方へ！</div>
-        </a>
-        <a href="https://morino.party/command/">
-          <div class="li">コマンド</div>
-        </a>
-        <a href="https://morino.party/protect/">
-          <div class="li">土地の保護</div>
-        </a>
-        <a href="https://morino.party/createshop/">
-          <div class="li">お金関連</div>
-        </a>
-        <a href="https://morino.party/fishing/">
-          <div class="li">釣り大会</div>
-        </a>
-        <a href="https://morino.party/forstreamers/">
-          <div class="li">配信者向け</div>
-        </a>
-        <a href="https://morino.party/vote/">
-          <div class="li">投票ボーナス</div>
-        </a>
-        <a href="https://morino.party/donate/">
-          <div class="li">寄付</div>
-        </a>
-        <a href="https://morino.party/discord/">
-          <div class="li">Discord</div>
-        </a>
-        <a href="https://morino.party/team/">
-          <div class="li">運営チーム</div>
-        </a>
-        <a href="https://morino.party/status/">
-          <div class="li">Server Status</div>
-        </a>
-      </div>
-    </nav>
+    <navbar type="index"></navbar>
     <section class="about">
       <div class="content">
         <div class="container">
@@ -253,12 +214,14 @@
 </template>
 
 <script>
+import navbar from "~/components/navbar.vue";
 import MoriFooter from "~/components/footer.vue";
 import playingcounter from "~/components/playingcounter.vue";
 import playingcounterbottom from "~/components/section#now.vue";
 
 export default {
   components: {
+    navbar,
     MoriFooter,
     playingcounter,
     playingcounterbottom

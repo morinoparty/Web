@@ -36,13 +36,6 @@ export default {
     linkify: true,
     typography: true
   },
-  generate: {
-    routes: function() {
-      return {
-        route: "/" + slug
-      };
-    }
-  },
 
   css: [{ src: "~/assets/scss/design.scss", lang: "scss" }],
 

@@ -363,6 +363,9 @@ nav#page_nav {
     opacity: 0.8;
     font-size: 0.8rem;
     font-weight: bold;
+    &.logo {
+      opacity: 1;
+    }
   }
 
   svg {
