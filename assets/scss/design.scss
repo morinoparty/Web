@@ -414,6 +414,7 @@ article {
   position: relative;
   overflow-x: hidden;
   z-index: 4;
+  min-height: calc(100vh - 339px);
   .wp-block-image img {
     max-width: initial;
   }

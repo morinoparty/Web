@@ -4,7 +4,7 @@
     <header class="sm">
       <div class="post_info">
         <div class="container">
-          <h1>{{title}}</h1>
+          <h1 v-html="title"></h1>
         </div>
       </div>
       <div class="bg_color"></div>
