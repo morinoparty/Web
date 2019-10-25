@@ -17,7 +17,8 @@ export default {
   buildModules: [
     "bootstrap-vue/nuxt",
     "@nuxtjs/style-resources",
-    "@nuxtjs/axios"
+    "@nuxtjs/axios",
+    "@nuxtjs/moment"
   ],
   plugins: [{ src: "~/plugins/modernizr-plugin.js", ssr: false }],
   css: [{ src: "~/assets/scss/design.scss", lang: "scss" }],

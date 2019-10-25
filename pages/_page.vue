@@ -1,6 +1,7 @@
 <template>
   <div>
     <navbar type="post"></navbar>
+    <user />
     <div v-show="loading" class="loader">Loading...</div>
     <header class="sm">
       <div class="post_info">
@@ -27,6 +28,7 @@
           <div v-show="loading" class="box ps-8"></div>
           <div v-show="loading" class="box ps-9"></div>
           <div v-html="content"></div>
+          <div class="last-update">{{ this.update | $moment("dddd, MMMM Do YYYY") }}</div>
         </div>
       </div>
     </article>
@@ -88,6 +90,9 @@ import navbar from "~/components/navbar.vue";
 import MoriFooter from "~/components/footer.vue";
 import bottompromo from "~/components/bottompromo.vue";
 import axios from "axios";
+import vue from "vue";
+import moment from "moment";
+moment.locale("ja");
 
 export default {
   components: {
@@ -99,9 +104,11 @@ export default {
     return {
       content: null,
       title: null,
+      update: null,
       loading: true
     };
   },
+
   async created() {
     const response = await axios.get(
       `https://morino.party/wp-json/wp/v2/pages?slug=${this.$route.path}`
@@ -109,7 +116,10 @@ export default {
     console.log(response);
     this.content = response.data[0].content.rendered;
     this.title = response.data[0].title.rendered;
+    this.update = response.data[0].modified_gmt;
     this.loading = false;
+    if (!this.content) {
+    }
   }
 };
 </script>

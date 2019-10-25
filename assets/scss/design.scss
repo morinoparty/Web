@@ -60,6 +60,9 @@ header {
       max-width: 300px;
     }
   }
+  &.login {
+    height: 100vh;
+  }
   .bg {
     background: none;
   }
@@ -362,6 +365,9 @@ nav#page_nav {
   &.post {
     transform: translateY(-39px);
     position: fixed;
+    &.login {
+      transform: translateY(0px);
+    }
   }
   &.index {
     justify-content: center !important;
@@ -441,6 +447,9 @@ nav#page_nav {
       max-width: 150px;
       overflow-y: hidden;
       max-height: 250px;
+    }
+    @media screen {
+      overflow-x: scroll;
     }
   }
 }
@@ -535,6 +544,22 @@ article {
         margin-bottom: 1.5rem;
         animation-delay: random(100) / 100 + s;
       }
+    }
+  }
+
+  .last-update {
+    font-size: 0.8rem;
+    text-align: right;
+    margin-top: 50px;
+    &::before {
+      background-color: #007907;
+      padding: 3px 5px;
+      border-radius: 3px;
+      margin-right: 5px;
+      color: white;
+      opacity: 0.3;
+      font-weight: bold;
+      content: "最終更新";
     }
   }
 
@@ -669,5 +694,33 @@ footer {
         }
       }
     }
+  }
+}
+
+.user {
+  background-color: #007907;
+  height: 40px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+  padding-right: 5px;
+  z-index: 100;
+  &.fixed {
+    position: fixed;
+    top: 39px;
+    right: 0;
+  }
+  .username {
+    display: inline-block;
+  }
+  img {
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  button {
+    margin-left: 30px;
   }
 }

@@ -69,7 +69,8 @@ export default {
         { label: "寄付", path: "/donate" },
         { label: "discord", path: "/discord" },
         { label: "運営チーム", path: "/team" },
-        { label: "Status", path: "/status" }
+        { label: "Status", path: "/status" },
+        { label: "ログイン", path: "/account" }
       ]
     };
   },
