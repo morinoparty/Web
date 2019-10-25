@@ -13,4 +13,3 @@ dist
 # dotenv environment variables file
 .env
 
-plugins/firebase.js
