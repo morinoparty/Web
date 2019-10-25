@@ -12,7 +12,13 @@ export default {
         content: "もりのパーティ!は、日本最大級のバニラ生活サーバーです。"
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,900"
+      }
+    ]
   },
   buildModules: [
     "bootstrap-vue/nuxt",

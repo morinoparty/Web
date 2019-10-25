@@ -36,29 +36,73 @@
         <div class="bg"></div>
       </header>
     </div>
-    <div v-else>
+    <div class="clearfix" v-else>
       <navbar type="post"></navbar>
-      <div class="user fixed">
+      <div class="userinfo fixed">
         <img :src="user.photoURL" alt />
         <div class="username">{{ user.displayName }}</div>
 
         <button @click="logOut" type="button" class="btn btn-sm btn-outline-light">ログアウト</button>
       </div>
-      <header class="sm">
-        <div class="post_info">
-          <div class="container">
-            <h1>ユーザーポータル</h1>
-            <div v-show="loading" class="box"></div>
+      <div class="right">
+        <header class="sm">
+          <div class="post_info">
+            <div class="container">
+              <h1>おかえり</h1>
+              <p>もりぱの部屋へようこそ。</p>
+              <div v-show="loading" class="box"></div>
+            </div>
           </div>
-        </div>
-        <div class="bg_color"></div>
-        <div class="bg"></div>
-      </header>
+          <div class="bg_color"></div>
+          <div class="bg"></div>
+        </header>
+        <article>
+          <div class="post">
+            <div class="container account">
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="inner">
+                    <h2>ステータ</h2>
+                    <p>ステータス</p>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <h2>プレイヤー情報</h2>
+                </div>
+                <div class="col-md-3">
+                  <h2>BANリスト</h2>
+                </div>
+                <div class="col-md-3">
+                  <h2>他なんかある？</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <MoriFooter />
     </div>
   </div>
 </template>
+
+<style lang="scss">
+article {
+  .container.account {
+    max-width: 1000px;
+    &.account {
+      h2 {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+}
+</style>
+
 <script>
 import navbar from "~/components/navbar.vue";
+import MoriFooter from "~/components/footer.vue";
 import firebase from "~/plugins/firebase";
 import { mapActions, mapState, mapGetters } from "vuex";
 export default {
@@ -72,7 +116,8 @@ export default {
   },
 
   components: {
-    navbar
+    navbar,
+    MoriFooter
   },
 
   asyncData() {
