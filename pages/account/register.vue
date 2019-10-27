@@ -1,28 +1,18 @@
 <template>
-  <div>{{ text }}</div>
+  <div>{{ text }} / {{ this.$nuxt.$route.query.uid }} / {{ this.$nuxt.$route.query.uuid }}</div>
 </template>
 <script>
 import firebase from "~/plugins/firebase";
 import { mapActions, mapState, mapGetters } from "vuex";
 export default {
-  head: {
-    title: "ユーザーポータル" + " | もりのパーティ!",
-    meta: [
-      {
-        content: "ユーザーがログインすることで様々な情報を閲覧できます"
-      }
-    ]
-  },
-  data() {
-    return {};
-  },
+  head: {},
   asyncData() {
     return {
       text: null
     };
   },
   mounted: function() {
-    if (this.$nuxt.$route.query.uid || this.$nuxt.$route.query.uuid) {
+    if (this.$nuxt.$route.query.uid) {
       firebase
         .firestore()
         .collection("users")
@@ -30,14 +20,12 @@ export default {
         .set({
           mcuuid: this.$nuxt.$route.query.uuid
         })
-        .then(res => {
-          console.log("Add Document with ID:", res.id);
-          return res.id;
+        .then(function() {
+          console.log("登録完了");
           this.text = "登録完了";
         })
-        .catch(err => {
-          console.error("Error: Add Document", err);
-          throw err;
+        .catch(function(error) {
+          console.error("Error: Add Document", error);
           this.text = "登録失敗";
         });
     } else {
