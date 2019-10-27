@@ -39,18 +39,31 @@
     <div class="clearfix" v-else>
       <navbar type="post"></navbar>
       <div class="userinfo fixed">
-        <img :src="user.photoURL" alt />
-        <div class="username">{{ user.displayName }}</div>
-
-        <button @click="logOut" type="button" class="btn btn-sm btn-outline-light">ログアウト</button>
+        <div v-if="minecraft.mcuuid">
+          <img class="head" :src="'https://minotar.net/cube/'+minecraft.mcuuid+'/100.png'" alt />
+          <mcname />
+          <button @click="logOut" type="button" class="btn btn-sm btn-outline-light">ログアウト</button>
+        </div>
+        <div v-else>
+          <img :src="user.photoURL" alt />
+          <div class="username">{{ user.displayName }}</div>
+          <button @click="logOut" type="button" class="btn btn-sm btn-outline-light">ログアウト</button>
+        </div>
       </div>
       <div class="right">
         <header class="sm">
           <div class="post_info">
             <div class="container">
-              <h1>おかえり</h1>
-              <p>もりぱの部屋へようこそ。</p>
-              <div v-show="loading" class="box"></div>
+              <div v-if="minecraft.mcuuid">
+                <h1>おかえり</h1>
+                <p>もりぱの部屋へようこそ。</p>
+              </div>
+              <div v-else>
+                <h1>登録できていません</h1>
+                <p>
+                  <code>/register {{user.uid}}</code>をメインサーバーで実行してください
+                </p>
+              </div>
             </div>
           </div>
           <div class="bg_color"></div>
@@ -103,6 +116,7 @@ article {
 <script>
 import navbar from "~/components/navbar.vue";
 import MoriFooter from "~/components/footer.vue";
+import mcname from "~/components/mcname.vue";
 import firebase from "~/plugins/firebase";
 import { mapActions, mapState, mapGetters } from "vuex";
 export default {
@@ -117,14 +131,19 @@ export default {
 
   components: {
     navbar,
-    MoriFooter
+    MoriFooter,
+    mcname
   },
-
+  data() {
+    return {};
+  },
   asyncData() {
     return {
       isWaiting: true,
       isLogin: false,
-      user: []
+      user: [],
+      minecraft: [],
+      mcname: null
     };
   },
   mounted: function() {
@@ -137,6 +156,17 @@ export default {
         this.isLogin = false;
         this.user = [];
       }
+      firebase
+        .firestore()
+        .collection("users")
+        .doc(user.uid)
+        .get()
+        .then(doc => {
+          console.log(doc.data());
+          if (doc.data()) {
+            this.minecraft = doc.data();
+          }
+        });
     });
   },
   methods: {
