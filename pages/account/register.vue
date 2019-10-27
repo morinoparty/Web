@@ -21,15 +21,13 @@ export default {
           mcuuid: this.$nuxt.$route.query.uuid
         })
         .then(function() {
-          console.log("登録完了");
-          this.text = "登録完了";
+          console.log("Add Document with ID:");
         })
         .catch(function(error) {
           console.error("Error: Add Document", error);
-          this.text = "登録失敗";
         });
     } else {
-      this.text = "登録失敗";
+      console.log("not");
     }
   }
 };
