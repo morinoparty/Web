@@ -27,7 +27,7 @@ export default {
         .firestore()
         .collection("users")
         .doc(this.$nuxt.$route.query.uid)
-        .add({
+        .set({
           mcuuid: this.$nuxt.$route.query.uuid
         })
         .then(res => {
