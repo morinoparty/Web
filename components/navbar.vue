@@ -64,13 +64,11 @@ export default {
         { label: "保護のかけ方", path: "/protect" },
         { label: "お金関連", path: "/createshop" },
         { label: "釣り大会", path: "/fishing" },
-        { label: "配信者向け", path: "/forstreamers" },
         { label: "投票ボーナス", path: "/vote" },
         { label: "寄付", path: "/donate" },
-        { label: "discord", path: "/discord" },
+        { label: "Discord", path: "https://discord.gg/9HdanPM" },
         { label: "運営チーム", path: "/team" },
-        { label: "Status", path: "/status" },
-        { label: "ログイン", path: "/account" }
+        { label: "ポータル", path: "/account" }
       ]
     };
   },

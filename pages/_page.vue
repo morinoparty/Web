@@ -1,12 +1,12 @@
 <template>
   <div>
     <navbar type="post"></navbar>
-    <user />
     <div v-show="loading" class="loader">Loading...</div>
     <header class="sm">
       <div class="post_info">
         <div class="container">
-          <h1 v-html="title"></h1>
+          <h1 v-html="content.title"></h1>
+          <p v-html="content.description"></p>
           <div v-show="loading" class="box"></div>
         </div>
       </div>
@@ -14,7 +14,7 @@
       <div class="bg"></div>
     </header>
 
-    <article>
+    <article class="post">
       <div class="post">
         <div class="container">
           <div v-show="loading" class="box h1"></div>
@@ -27,8 +27,7 @@
           <div v-show="loading" class="box ps-7"></div>
           <div v-show="loading" class="box ps-8"></div>
           <div v-show="loading" class="box ps-9"></div>
-          <div v-html="content"></div>
-          <div class="last-update">{{ this.update | $moment("dddd, MMMM Do YYYY") }}</div>
+          <div v-html="content.body"></div>
         </div>
       </div>
     </article>
@@ -89,12 +88,57 @@
 import navbar from "~/components/navbar.vue";
 import MoriFooter from "~/components/footer.vue";
 import bottompromo from "~/components/bottompromo.vue";
+
+import firebase from "~/plugins/firebase";
+
 import axios from "axios";
 import vue from "vue";
-import moment from "moment";
-moment.locale("ja");
 
 export default {
+  head() {
+    return {
+      title: this.content.title + " | もりのパーティ!",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.content.description
+        },
+        {
+          property: "og:title",
+          content: this.content.title
+        },
+        {
+          property: "og:description",
+          content: this.content.description
+        },
+        {
+          property: "og:type",
+          content: "article"
+        },
+        {
+          property: "og:site_name",
+          content: "もりのパーティ!"
+        },
+        {
+          property: "og:url",
+          content: "https://morino.party/" + this.$nuxt.$route.params.page
+        },
+        {
+          property: "og:image",
+          content: "https://morino.party/assets/thumb.png"
+        },
+        {
+          name: "twitter:card",
+          content: "summary_large_image"
+        },
+        {
+          name: "twitter:site",
+          content: "morinoparty"
+        }
+      ]
+    };
+  },
   components: {
     navbar,
     MoriFooter,
@@ -102,24 +146,24 @@ export default {
   },
   data() {
     return {
-      content: null,
-      title: null,
-      update: null,
+      content: [],
       loading: true
     };
   },
 
-  async created() {
-    const response = await axios.get(
-      `https://morino.party/wp-json/wp/v2/pages?slug=${this.$route.path}`
-    );
-    console.log(response);
-    this.content = response.data[0].content.rendered;
-    this.title = response.data[0].title.rendered;
-    this.update = response.data[0].modified_gmt;
-    this.loading = false;
-    if (!this.content) {
-    }
+  mounted: function() {
+    firebase
+      .firestore()
+      .collection("pages")
+      .doc("first")
+      .get()
+      .then(doc => {
+        console.log(doc.data());
+        if (doc.data()) {
+          this.content = doc.data();
+          this.loading = false;
+        }
+      });
   }
 };
 </script>

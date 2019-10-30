@@ -463,56 +463,59 @@ article {
   overflow-x: hidden;
   z-index: 4;
   min-height: calc(100vh - 339px);
-  .wp-block-image img {
-    max-width: initial;
-  }
-
-  img {
-    height: auto;
-    width: calc(100% + 30px);
-    transform: translateX(-15px);
-    margin-top: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
-    background-color: #f8f9fa;
-  }
-  h1,
-  h2,
-  h3,
-  h4 {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-  h1 {
-    margin-top: 0px;
-    margin-bottom: 50px;
-    text-align: center;
-  }
-  h2 {
-    background: white;
-    display: inline-block;
-    padding: 10px 15px;
-    font-size: 1.5rem;
-    transform: translateX(-15px);
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
-  }
-  h3 {
-    margin-top: 50px;
-  }
-  a {
-    word-wrap: break-word;
-    letter-spacing: 0.05rem;
-    color: #4eb7d9;
-    transition-duration: 0.5s;
-    &:hover {
-      text-decoration: none;
-      color: #30869b;
+  &.post {
+    .container {
+      max-width: 700px;
     }
-  }
-  p {
-    margin-bottom: 1rem;
-    line-height: 2;
+
+    .wp-block-image img {
+      max-width: initial;
+    }
+    img {
+      height: auto;
+      width: calc(100% + 30px);
+      transform: translateX(-15px);
+      margin-top: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+      background-color: #f8f9fa;
+    }
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    h1 {
+      margin-top: 0px;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+    h2 {
+      background: white;
+      display: inline-block;
+      padding: 10px 15px;
+      font-size: 1.5rem;
+      transform: translateX(-15px);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+    }
+    h3 {
+      margin-top: 50px;
+    }
+    a {
+      word-wrap: break-word;
+      letter-spacing: 0.05rem;
+      transition-duration: 0.5s;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    p {
+      margin-bottom: 1rem;
+      line-height: 2;
+    }
   }
 
   .box {
@@ -717,7 +720,7 @@ footer {
     height: 40px;
     border-radius: 50%;
     &.head {
-      border-radius: 0;
+      border-radius: 10px;
     }
   }
   button {

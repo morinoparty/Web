@@ -28,18 +28,12 @@ export default {
   data() {
     return {
       links: [
-        { label: "はじめての方へ!", path: "/first" },
-        { label: "コマンド", path: "/command" },
-        { label: "保護のかけ方", path: "/protect" },
-        { label: "お金関連", path: "/createshop" },
-        { label: "釣り大会", path: "/fishing" },
-        { label: "配信者向け", path: "/forstreamers" },
-        { label: "投票ボーナス", path: "/vote" },
-        { label: "寄付", path: "/donate" },
-        { label: "discord", path: "/discord" },
-        { label: "運営チーム", path: "/team" },
-        { label: "Status", path: "/status" },
-        { label: "ログイン", path: "/account" }
+        {
+          label: "YouTubeチャンネル",
+          path: "https://www.youtube.com/channel/UC5huN7nu_9RJKB-rPk8Z0hQ"
+        },
+        { label: "Twitter", path: "https://twitter.com/morinoparty" },
+        { label: "Wiki", path: "https://wiki.morino.party" }
       ]
     };
   },

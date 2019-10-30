@@ -1,46 +1,12 @@
 <template>
   <div>
-    <div v-if="!isLogin">
-      <navbar type="post login"></navbar>
-      <header class="login">
-        <div class="post_info">
-          <div class="container text-center">
-            <h1>ログイン</h1>
-            <p>
-              もりのパーティにログインすると、
-              <br />それぞれのプレイヤー情報を検索したり、BAN記録を検索したり、
-              <br />運営チームはこのページからユーザーを管理することができます
-            </p>
-            <button @click="googleLogin" type="button" class="btn btn-primary">
-              <svg
-                style="width: 20px;margin-right:10px"
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fab"
-                data-icon="google"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 488 512"
-                class="svg-inline--fa fa-google fa-w-16"
-              >
-                <path
-                  fill="currentColor"
-                  d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
-                  class
-                />
-              </svg>Googleでログイン
-            </button>
-          </div>
-        </div>
-        <div class="bg_color"></div>
-        <div class="bg"></div>
-      </header>
-    </div>
-    <div class="clearfix" v-else>
+    <div class="loading" v-show="isWaiting">読み込み</div>
+
+    <div v-if="minecraft.mcuuid">
       <navbar type="post"></navbar>
       <div class="userinfo fixed">
         <div v-if="minecraft.mcuuid">
-          <img class="head" :src="'https://minotar.net/cube/'+minecraft.mcuuid+'/100.png'" alt />
+          <img class="head" :src="'https://minotar.net/helm/'+minecraft.mcuuid+'/100.png'" alt />
           <mcname />
           <button @click="logOut" type="button" class="btn btn-sm btn-outline-light">ログアウト</button>
         </div>
@@ -50,65 +16,178 @@
           <button @click="logOut" type="button" class="btn btn-sm btn-outline-light">ログアウト</button>
         </div>
       </div>
-      <div class="right">
-        <header class="sm">
-          <div class="post_info">
-            <div class="container">
-              <div v-if="minecraft.mcuuid">
-                <h1>おかえり</h1>
-                <p>もりぱの部屋へようこそ。</p>
-              </div>
-              <div v-else>
-                <h1>登録できていません</h1>
-                <p>
-                  <code>/register {{user.uid}}</code>をメインサーバーで実行してください
-                </p>
-              </div>
+      <header class="sm">
+        <div class="post_info">
+          <div class="container">
+            <div v-if="minecraft.mcuuid">
+              <h1>おかえり</h1>
+              <p>もりぱの部屋へようこそ。</p>
             </div>
           </div>
-          <div class="bg_color"></div>
-          <div class="bg"></div>
-        </header>
-        <article>
-          <div class="post">
-            <div class="container account">
-              <div class="row">
-                <div class="col-md-3">
-                  <div class="inner">
-                    <h2>ステータ</h2>
-                    <p>ステータス</p>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <h2>プレイヤー情報</h2>
-                </div>
-                <div class="col-md-3">
-                  <h2>BANリスト</h2>
-                </div>
-                <div class="col-md-3">
-                  <h2>他なんかある？</h2>
-                </div>
+        </div>
+        <div class="bg_color"></div>
+        <div class="bg"></div>
+      </header>
+      <article>
+        <div class="post">
+          <div class="container account">
+            <div class="row">
+              <div class="col-md-12">
+                <section class="msg notice">
+                  <h2>
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="fas"
+                      data-icon="bullhorn"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 576 512"
+                      class="svg-inline--fa fa-bullhorn fa-w-18"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M576 240c0-23.63-12.95-44.04-32-55.12V32.01C544 23.26 537.02 0 512 0c-7.12 0-14.19 2.38-19.98 7.02l-85.03 68.03C364.28 109.19 310.66 128 256 128H64c-35.35 0-64 28.65-64 64v96c0 35.35 28.65 64 64 64h33.7c-1.39 10.48-2.18 21.14-2.18 32 0 39.77 9.26 77.35 25.56 110.94 5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56-16.4-21.52-26.15-48.36-26.15-77.44 0-11.11 1.62-21.79 4.41-32H256c54.66 0 108.28 18.81 150.98 52.95l85.03 68.03a32.023 32.023 0 0 0 19.98 7.02c24.92 0 32-22.78 32-32V295.13C563.05 284.04 576 263.63 576 240zm-96 141.42l-33.05-26.44C392.95 311.78 325.12 288 256 288v-96c69.12 0 136.95-23.78 190.95-66.98L480 98.58v282.84z"
+                        class
+                      />
+                    </svg>あなたへのお知らせ
+                  </h2>
+                  <figure>
+                    <h3>タイトルテキスト</h3>
+                    <p>本文</p>
+                  </figure>
+                </section>
               </div>
+              <component
+                v-for="(link, i) in links"
+                :key="`bad-sample_${i}`"
+                :is="isInternalLink(link.path) ? 'nuxt-link' : 'a'"
+                :to="isInternalLink(link.path) ? link.path : ''"
+                :href="isInternalLink(link.path) ? '' : link.path"
+                class="col-md-6 tab"
+              >
+                <div class="li">
+                  <section class="msg" :class="link.type">
+                    <h2>
+                      <i class="fas" :class="'fa-'+link.icon"></i>
+                      {{link.title}}
+                    </h2>
+                    <figure>
+                      <p>{{link.description}}</p>
+                    </figure>
+                  </section>
+                </div>
+              </component>
             </div>
           </div>
-        </article>
-      </div>
-
+        </div>
+      </article>
       <MoriFooter />
     </div>
+
+    <nologin v-else />
   </div>
 </template>
 
 <style lang="scss">
-article {
-  .container.account {
-    max-width: 1000px;
-    &.account {
-      h2 {
-        width: 100%;
-        text-align: center;
+.loading {
+  position: fixed;
+  z-index: 4;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: left;
+}
+.login-msg {
+  background: #ffffff;
+  max-width: 300px;
+  padding: 100px 20px;
+  border-radius: 10px;
+  margin: auto;
+  color: #007907;
+  h1 {
+    font-size: 1.8rem;
+    color: #007907 !important;
+    margin-bottom: 30px;
+  }
+  code {
+    color: #ffb200;
+    background-color: #fff9ea;
+    padding: 5px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    display: block;
+  }
+  p {
+    color: #007907 !important;
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+  }
+}
+a,
+a:hover {
+  text-decoration: none;
+}
+.col-md-12.tab {
+  margin-bottom: 20px;
+}
+section {
+  &.msg {
+    background-color: #f6f6f6;
+    border-left: 6px solid;
+    border-right: 6px solid;
+    padding: 20px;
+    margin-bottom: 0px;
+    text-align: left;
+    &.notice {
+      border-color: #ff9800;
+      margin-bottom: 50px;
+      h2,
+      h3 {
+        color: #ff9800;
       }
     }
+    &.form {
+      border-color: #4ba7cc;
+      h2,
+      p {
+        color: #4ba7cc;
+      }
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: left;
+      svg {
+        height: 1.5rem;
+        margin-right: 15px;
+      }
+    }
+    figure {
+      margin-left: 42px;
+      margin-top: 15px;
+      margin-bottom: 0;
+      h3 {
+        font-size: 1rem;
+        display: inline-block;
+        font-weight: bold;
+        border-radius: 5px;
+        margin-bottom: 0;
+      }
+      p {
+        opacity: 0.7;
+        font-size: 0.9rem;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+article {
+  h1 {
+    font-weight: bold;
   }
 }
 </style>
@@ -117,6 +196,8 @@ article {
 import navbar from "~/components/navbar.vue";
 import MoriFooter from "~/components/footer.vue";
 import mcname from "~/components/mcname.vue";
+import nologin from "~/components/account/nologin.vue";
+
 import firebase from "~/plugins/firebase";
 import { mapActions, mapState, mapGetters } from "vuex";
 export default {
@@ -126,16 +207,37 @@ export default {
       {
         content: "ユーザーがログインすることで様々な情報を閲覧できます"
       }
-    ]
+    ],
+    script: [{ src: "https://kit.fontawesome.com/cf7cf76089.js" }]
   },
 
   components: {
     navbar,
     MoriFooter,
-    mcname
+    mcname,
+    nologin
   },
   data() {
-    return {};
+    return {
+      links: [
+        {
+          type: "form",
+          icon: "balance-scale",
+          title: "荒らし被害を報告",
+          description:
+            "荒らし被害を見つけたら、こちらから報告してください。ある一定の条件で自動的に処罰されます。",
+          path: "/account/form/grefing"
+        },
+        {
+          type: "form",
+          icon: "eraser",
+          title: "エリア保護解除申請",
+          description:
+            "保護のルールに基づき不要と思われるエリア保護を見つけたら、こちらから申請してください。",
+          path: "/account/form/areaprotect"
+        }
+      ]
+    };
   },
   asyncData() {
     return {
@@ -176,6 +278,9 @@ export default {
     },
     logOut() {
       firebase.auth().signOut();
+    },
+    isInternalLink(path) {
+      return !/^https?:\/\//.test(path);
     }
   }
 };
