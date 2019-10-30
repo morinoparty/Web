@@ -155,7 +155,7 @@ export default {
     firebase
       .firestore()
       .collection("pages")
-      .doc("first")
+      .doc(this.$nuxt.$route.params.page)
       .get()
       .then(doc => {
         console.log(doc.data());
