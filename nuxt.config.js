@@ -2,14 +2,48 @@ export default {
   mode: "spa",
 
   head: {
-    title: "もりのパーティ!",
+    title: "もりのパーティ! | まったりのんびりマイクラ生活!",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
         hid: "description",
         name: "description",
-        content: "もりのパーティ!は、日本最大級のバニラ生活サーバーです。"
+        content:
+          "まったりのんびりマイクラ生活! もりのパーティ!は、日本最大級のバニラ生活サーバーです。"
+      },
+      {
+        property: "og:title",
+        content: "もりのパーティ!"
+      },
+      {
+        property: "og:description",
+        content:
+          "まったりのんびりマイクラ生活! もりのパーティ!は、日本最大級のバニラ生活サーバーです。"
+      },
+      {
+        property: "og:type",
+        content: "article"
+      },
+      {
+        property: "og:site_name",
+        content: "もりのパーティ!"
+      },
+      {
+        property: "og:url",
+        content: "https://morino.party/"
+      },
+      {
+        property: "og:image",
+        content: "https://morino.party/assets/thumb.png"
+      },
+      {
+        name: "twitter:card",
+        content: "summary_large_image"
+      },
+      {
+        name: "twitter:site",
+        content: "morinoparty"
       }
     ],
     link: [

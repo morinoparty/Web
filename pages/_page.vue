@@ -162,7 +162,20 @@ export default {
         if (doc.data()) {
           this.content = doc.data();
           this.loading = false;
+        } else {
+          if (doc.data() === undefined) {
+            this.content = {
+              title: "404",
+              description: "このページは存在しません",
+              body: "URLをお確かめの上、再度アクセスしてください。"
+            };
+            this.loading = false;
+          }
         }
+      })
+      .catch(err => {
+        console.error("Error: Add Document", err);
+        throw err;
       });
   }
 };
