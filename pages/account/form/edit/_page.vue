@@ -15,11 +15,7 @@
         <div class="post_info">
           <div class="container">
             <div v-if="minecraft.mcuuid">
-              <h1>
-                <i class="fas" :class="'fa-'+body.icon"></i>
-                {{body.title}}
-              </h1>
-              <p>{{body.description}}</p>
+              <h1>文章編集：{{body.title}}</h1>
             </div>
           </div>
         </div>
@@ -28,12 +24,46 @@
       </header>
       <article>
         <div class="post">
-          <div class="container">
-            {{mcid}}
-            <form @submit.prevent="exec">
-              
-            </form>
-          </div>
+          <form @submit.prevent="exec">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="title">タイトル</label>
+                    <input id="title" class="form-control" :value="body.title" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="slug">url</label>
+                    <input id="slug" class="form-control" :value="this.$nuxt.$route.params.page" />
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="description">本文</label>
+                    <input id="description" class="form-control" :value="body.description" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="container" style="max-width:900px">
+              <div class="form-group">
+                <label for="body">本文</label>
+                <tinymce-editor
+                  api-key="ivxgkv84v190xo9m6mjfiwe69ef9emhn3zfhpeyi4pvzon4h"
+                  v-model="body.body"
+                  :init="{selector: 'textarea',plugins: 'code',content_css:['https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css','https://morino.party/tinymce/editor.css']}"
+                  style="height:calc(100vh - 200px)"
+                >{{body.body}}</tinymce-editor>
+              </div>
+            </div>
+            <div class="container" style="max-width:900px">
+              <div class="form-group">
+                <button type="submit" class="btn btn-outline-success">確定</button>
+              </div>
+            </div>
+          </form>
         </div>
       </article>
       <MoriFooter />
@@ -73,6 +103,10 @@ article {
     font-weight: bold;
   }
 }
+
+.ql-showHtml:after {
+  content: "[source]";
+}
 </style>
 
 <script>
@@ -86,6 +120,8 @@ import Vue from "vue";
 import { mapActions, mapState, mapGetters } from "vuex";
 import { Route } from "vue-router";
 
+import Editor from "@tinymce/tinymce-vue";
+
 export default {
   head: {
     title: "ユーザーポータル" + " | もりのパーティ!",
@@ -94,79 +130,41 @@ export default {
         content: "ユーザーがログインすることで様々な情報を閲覧できます"
       }
     ],
-    script: [{ src: "https://kit.fontawesome.com/cf7cf76089.js" }]
+    script: [
+      { src: "https://kit.fontawesome.com/cf7cf76089.js" },
+      { src: "https://cdn.quilljs.com/1.3.6/quill.js" }
+    ]
   },
-
   components: {
     navbar,
     MoriFooter,
     mcname,
-    nologin
+    nologin,
+    "tinymce-editor": Editor // <- Important part
   },
   data() {
     return {
-      body: [],
-      type: [
-        {
-          path: "grefing",
-          icon: "balance-scale",
-          title: "荒らし被害を報告",
-          description:
-            "荒らし被害を見つけたら、こちらから報告してください。ある一定の条件で自動的に処罰されます。",
-          input: [
-            {
-              title: "該当するMinecraftIDを入力してください",
-              type: "input",
-              value: "mcid"
-            },
-            {
-              title: "荒らされているポイントを入力してください",
-              input: [
-                { title: "X座標", value: "t" },
-                { title: "Y座標", value: "position_y" },
-                { title: "Z座標", value: "position_z" }
-              ],
-              type: "multiple"
-            },
-            {
-              title: "現在の状態/その他の情報",
-              type: "input",
-              value: "body"
-            }
-          ]
-        },
-        {
-          path: "areaprotect",
-          icon: "eraser",
-          title: "エリア保護解除申請",
-          description:
-            "保護のルールに基づき不要と思われるエリア保護を見つけたら、こちらから申請してください。",
-          input: [
-            {
-              title: "該当するMinecraftIDを入力してください",
-              type: "input",
-              value: "mcid"
-            },
-            {
-              title: "荒らされているポイントを入力してください",
-              input: [
-                { title: "X座標", value: "position_x" },
-                { title: "Y座標", value: "position_y" },
-                { title: "Z座標", value: "position_z" }
-              ],
-              type: "multiple"
-            },
-            {
-              title: "現在の状態/その他の情報",
-              type: "input",
-              value: "body"
-            }
+      editorSettings: {
+        modules: {
+          toolbar: [
+            [{ header: [1, 2, 3, 4, 5, 6, false] }],
+
+            ["bold", "italic", "underline", "strike"], // toggled buttons
+            ["blockquote", "code-block"],
+
+            [{ list: "ordered" }, { list: "bullet" }],
+
+            [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+            [{ align: [] }],
+
+            ["clean"], // remove formatting button
+            ["link", "image"],
+            ["showHtml"]
           ]
         }
-      ]
+      }
     };
   },
-
   asyncData() {
     return {
       isWaiting: true,
@@ -200,13 +198,22 @@ export default {
     });
     firebase
       .firestore()
-      .collection("form")
-      .doc(this.$nuxt.$route.params.type)
+      .collection("pages")
+      .doc(this.$nuxt.$route.params.page)
       .get()
       .then(doc => {
         console.log(doc.data());
         if (doc.data()) {
           this.body = doc.data();
+        } else {
+          if (doc.data() === undefined) {
+            this.body = {
+              title: "404",
+              description: "このページは存在しません",
+              body: "URLをお確かめの上、再度アクセスしてください。"
+            };
+            this.loading = false;
+          }
         }
       });
   },
@@ -225,6 +232,22 @@ export default {
     exec: function() {
       // 本来はajax通信をする
       console.log("exec");
+      firebase
+        .firestore()
+        .collection("pages")
+        .doc(this.$nuxt.$route.params.page)
+        .set({
+          title: this.body.title,
+          description: this.body.description,
+          body: this.body.body,
+          date: new Date()
+        })
+        .then(function(res) {
+          console.log("Document successfully written!");
+        })
+        .catch(function(error) {
+          console.error("Error writing document: ", error);
+        });
     }
   },
   computed: {
