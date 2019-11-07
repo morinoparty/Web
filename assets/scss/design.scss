@@ -45,6 +45,19 @@ body {
   font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  @media (prefers-color-scheme: dark) {
+    background-color: #171717;
+    article {
+      background-color: #1b1f1a;
+      color: white;
+      h2 {
+        color: #212529;
+      }
+      article .table {
+        color: white;
+      }
+    }
+  }
 }
 header {
   z-index: 2;

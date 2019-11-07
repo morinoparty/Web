@@ -175,6 +175,7 @@ export default {
     };
   },
   mounted: function() {
+    
     firebase.auth().onAuthStateChanged(user => {
       this.isWaiting = false;
       if (user) {
