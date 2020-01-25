@@ -67,8 +67,8 @@ export default {
         { label: "投票ボーナス", path: "/vote" },
         { label: "寄付", path: "/donate" },
         { label: "Discord", path: "https://discord.gg/9HdanPM" },
-        { label: "運営チーム", path: "/team" },
-        { label: "ポータル", path: "/account" }
+        { label: "運営チーム", path: "https://support.morino.party/team" },
+        { label: "Wiki", path: "https://wiki.morino.party" }
       ]
     };
   },
